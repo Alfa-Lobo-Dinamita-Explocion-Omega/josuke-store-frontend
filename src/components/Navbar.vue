@@ -3,11 +3,13 @@
     <b :class="$style.josukeStore">Josuke Store</b>
     <div :class="$style.navegacion">
       <div :class="$style.derecha">
-        <div :class="$style.inicio">Inicio</div>
-        <div :class="$style.ordenes">Ordenes</div>
-        <div :class="$style.producto">Producto</div>
-        <div :class="$style.cliente">Cliente</div>
-        <div :class="$style.menu">Menu</div>
+        <router-link :to="{ name: 'PaginaInicio' }" :class="$style.link">Inicio</router-link>
+        <div :class="$style.link">Ordenes</div>
+        <router-link :to="{ name: 'RegistroProducto' }" :class="$style.link">Producto</router-link>
+        <div :class="$style.link">Cliente</div>
+        <div :class="$style.link">Menu</div>
+        <router-link :to="{ name: 'RegistroCliente' }" :class="$style.link">Registro</router-link>
+
         <img
           :class="$style.linkIcon"
           loading="lazy"
@@ -34,33 +36,7 @@
     white-space: nowrap;
     flex-shrink: 0;
   }
-  .inicio {
-    position: relative;
-    line-height: 21px;
-    font-weight: 500;
-    flex-shrink: 0;
-  }
-  .ordenes {
-    position: relative;
-    line-height: 21px;
-    font-weight: 500;
-    flex-shrink: 0;
-  }
-  .producto {
-    position: relative;
-    line-height: 21px;
-    font-weight: 500;
-    flex-shrink: 0;
-  }
-  .cliente {
-    width: 65.2px;
-    position: relative;
-    line-height: 21px;
-    font-weight: 500;
-    display: inline-block;
-    flex-shrink: 0;
-  }
-  .menu {
+  .link {
     position: relative;
     line-height: 21px;
     font-weight: 500;
