@@ -5,100 +5,88 @@
       <h3>
         Registro Clientes Josuke Store
       </h3>
+      <div>Nombre completo</div>
       <div>
-        <div :class="$style.lastNameInput">
+        <input v-model="name" :class="$style.placeholder2" placeholder="Ingrese su nombre" type="text" />
+      </div>
+      <div>Correo electronico</div>
+      <div>
+        <input v-model="email" :class="$style.placeholder2" placeholder="example@gmail.com" type="text" />
+      </div>
+      <div>Nombre de usuario</div>
+      <div>
+        <input v-model="userName" :class="$style.placeholder2" placeholder="user123" type="text" />
+      </div>
+      <div>Contraseña</div>
+      <div>
+        <input v-model="password" :class="$style.placeholder2" placeholder="user123" type="text" />
+      </div>
+      <div :class="$style.lastNameInput">
+        <div>
           <div>
+            <div>Telefono
+            </div>
             <div>
-              <div>Nombres</div>
-              <div>
-                <input :class="$style.placeholder" placeholder="ingrese su nombre" type="text" />
-              </div>
+              <input  v-model="phone" :class="$style.placeholder" placeholder="example: 340205335" type="text" />
             </div>
           </div>
+        </div>
+        <div>
           <div>
+            <div><Noscript></Noscript>N° de documento</div>
             <div>
-              <div>apellido</div>
-              <div>
-                <input :class="$style.placeholder" placeholder="ingrese su apellido" type="text" />
-              </div>
+              <input  v-model="idUser" :class="$style.placeholder" placeholder="Ingrese N° de documento" type="text" />
             </div>
           </div>
         </div>
       </div>
-      <div>correo electronico</div>
+      <div>Direccion</div>
+      <div>
+        <input  v-model="address" :class="$style.placeholder2" placeholder="Ingrese su direccion" type="text" />
+      </div>
+      <div :class="$style.lastNameInput">
         <div>
-          <input :class="$style.placeholder2" placeholder="example@gmail.com" type="text" />
+          <div>
+            <div>Pais
+            </div>
+            <div>
+              <input   v-model="country" :class="$style.placeholder" placeholder="Selecione su pais" type="text" />
+            </div>
+
+          </div>
         </div>
-        <div>telefono</div>
         <div>
-          <input :class="$style.placeholder2" placeholder="example: 340205335" type="text" />
-        </div>
-        <div :class="$style.lastNameInput">
           <div>
+            <div><Noscript></Noscript>Departamento</div>
             <div>
-              <div>tipo de documento
-              </div>
-              <div>
-                <input :class="$style.placeholder" placeholder="selecione su tipo de documento" type="text" />
-              </div>
-            </div>
-          </div>
-          <div>
-            <div>
-              <div><Noscript></Noscript>N° de documento</div>
-              <div>
-                <input :class="$style.placeholder" placeholder="ingrese N° de documento" type="text" />
-              </div>
+              <input  v-model="password" :class="$style.placeholder" placeholder="ej: antioquia" type="text" />
             </div>
           </div>
         </div>
-        <div>Direccion</div>
+      </div>
+      <div :class="$style.lastNameInput">
         <div>
-          <input :class="$style.placeholder2" placeholder="ingrese su direccion" type="text" />
-        </div>
-        <div :class="$style.lastNameInput">
           <div>
-            <div>
-              <div>pais
-              </div>
-              <div>
-                <input :class="$style.placeholder" placeholder="selecione su pais" type="text" />
-              </div>
-             
+            <div>Ciudad
             </div>
-          </div>
-          <div>
             <div>
-              <div><Noscript></Noscript>departamento</div>
-              <div>
-                <input :class="$style.placeholder" placeholder="ej: antioquia" type="text" />
-              </div>
+              <input  v-model="city" :class="$style.placeholder" placeholder="ej: medellin" type="text" />
             </div>
           </div>
         </div>
-        <div :class="$style.lastNameInput">
+        <div>
           <div>
+            <div><Noscript></Noscript>Codigo postal</div>
             <div>
-              <div>ciudad
-              </div>
-              <div>
-                <input :class="$style.placeholder" placeholder="ej: medellin" type="text" />
-              </div>
-            </div>
-          </div>
-          <div>
-            <div>
-              <div><Noscript></Noscript>codigo postal</div>
-              <div>
-                <input :class="$style.placeholder" placeholder="codigo postal" type="text" />
-              </div>
+              <input  v-model="postalCode" :class="$style.placeholder" placeholder="Codigo postal" type="text" />
             </div>
           </div>
         </div>
-        <button :class="$style.bluebutton">Registrar</button>
+      </div>
+      <button :class="$style.bluebutton">Registrar</button>
 
     </div>
-    
+
   </section>
 </template>
 
@@ -192,5 +180,5 @@ export default {
   padding: 10px;
   border-radius: 10px;
   width: 480px;
-  }
+}
 </style>

@@ -6,7 +6,7 @@
         <router-link :to="{ name: 'PaginaInicio' }" :class="$style.link">Inicio</router-link>
         <div :class="$style.link">Ordenes</div>
         <router-link :to="{ name: 'RegistroProducto' }" :class="$style.link">Producto</router-link>
-        <div :class="$style.link">Cliente</div>
+        <router-link :to="{ name: 'EditarProducto' }" :class="$style.link">Producto</router-link>
         <div :class="$style.link">Menu</div>
         <router-link :to="{ name: 'RegistroCliente' }" :class="$style.link">Registro</router-link>
 
