@@ -17,26 +17,34 @@
                 <div>
                     <div>Nombre del producto</div>
                     <div>
-                        <input :class="$style.placeholder" placeholder="e.j hamburguesa" type="text" />
+                        <input v-model="productName" :class="$style.placeholder" placeholder="e.j hamburguesa" type="text" />
                     </div>
                 </div>
                 <div>Codigo del producto</div>
                 <div>
-                    <input :class="$style.placeholder" placeholder="e.j 1234" type="text" />
+                    <input v-model="productCode" :class="$style.placeholder" placeholder="e.j 1234" type="text" />
                 </div>
                 <div>Precio</div>
                 <div>
-                    <input :class="$style.placeholder" placeholder="$0.0" type="text" />
+                    <input v-model="price" :class="$style.placeholder" placeholder="$0.0" type="text" />
                 </div>
                 <div>Descripción</div>
-                <textarea :class="$style.placeholder2" v-model="message"
+                <textarea v-model="productDescription" :class="$style.placeholder2"
                     placeholder="e.j hamburguesa sencilla con carne artesal, queso y tomate"></textarea>
+
                 <div>Disponible</div>
                 <div>
-                    <input :class="$style.placeholder" placeholder="e.j hamburguesa" type="text" />
+                    <select v-model="isAvailable" :class="$style.placeholder">
+                        <option value="1">Sí</option>
+                        <option value="0">No</option>
+                    </select>
+                </div>
+                <div>URL imagen</div>
+                <div>
+                  <input v-model="urlProductImage" :class="$style.placeholder" placeholder="e.j: https://www.bing.com/images/create/un-gato-programador2c-que-parezca-real-no-una-caric/1-65e8b1de88e242f8a2bcdd4afaa8ca8e?id=QpuCq3bBBR3oOPLnPN7V6w%3d%3d&view=detailv2&idpp=genimg&thId=OIG1.0fLX69uNsKLML7OFKEUO&FORM=GCRIDP&mode=overlay" type="text" />
                 </div>
             </div>
-            <button :class="$style.bluebutton">Save</button>
+            <button @click="submitForm" :class="$style.bluebutton">Save</button>
         </div>
     </section>
 </div>
@@ -53,18 +61,18 @@ export default {
 
     data() {
         return {
-            nombre: '',
-            apellido: '',
-            telefono: '',
+            productCode: '',
+            productName: '',
+            productDescription: '',
+            price:'',
+            isAvailable:'',
+            urlProductImage:'',
         }
     },
     methods: {
 
         submitForm() {
-            alert(`Nombre: ${this.nombre}\nApellido: ${this.apellido}\nTeléfono: ${this.telefono}`);
-            this.nombre = '';
-            this.apellido = '';
-            this.telefono = '';
+
         }
     }
 }

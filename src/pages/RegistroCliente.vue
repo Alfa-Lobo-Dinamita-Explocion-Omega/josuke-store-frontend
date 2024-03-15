@@ -83,7 +83,7 @@
           </div>
         </div>
       </div>
-      <button :class="$style.bluebutton">Registrar</button>
+      <button @click="submitForm" :class="$style.bluebutton">Registrar</button>
 
     </div>
 
@@ -98,17 +98,20 @@ export default {
 
   data() {
     return {
-      nombre: '',
-      apellido: '',
-      telefono: ''
+      name: '',
+      email: '',
+      phone: '',
+      idUser: '',
+      address: '',
+      city: '',
+      postalCode: '',
+      userName: '',
+      password: '',
+      role: "CLIENT"
     }
   },
   methods: {
     submitForm() {
-      alert(`Nombre: ${this.nombre}\nApellido: ${this.apellido}\nTeléfono: ${this.telefono}`);
-      this.nombre = '';
-      this.apellido = '';
-      this.telefono = '';
     }
   }
 }
