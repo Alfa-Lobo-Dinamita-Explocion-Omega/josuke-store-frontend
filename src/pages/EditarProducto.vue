@@ -100,7 +100,7 @@ export default {
     max-width: 100%;
     text-align: left;
     font-size: 22px;
-    color: var(--color-gray-200);
+    background-color: #f0f8ff; /* Azul claro */
     font-family: var(--font-inter);
 }
 
@@ -108,7 +108,7 @@ export default {
     font-size: 17px;
     color: #4F7396;
     border: 2px solid #D1DBE8;
-    background-color: #ededed;
+    background-color: #fffefe;
     padding: 10px;
     border-radius: 10px;
     width: 480px;
@@ -119,7 +119,7 @@ export default {
     font-size: 17px;
     color: #1d6ec0;
     border: 2px solid #D1DBE8;
-    background-color: #ededed;
+    background-color: #ffffff;
     padding: 10px;
     border-radius: 10px;
     width: 480px;

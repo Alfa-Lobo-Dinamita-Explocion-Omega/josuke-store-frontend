@@ -1,4 +1,5 @@
 <template>
+      <div class="product-entry-container">
     <Navbar />
     <section :class="$style.subframe">
         <div :class="$style.customerRegistrationFrame">
@@ -20,8 +21,7 @@
                 </div>
                 <div>Precio</div>
                 <div>
-                    <input v-model="price" :class="$style.placeholder" placeholder="E.j $10000" type="number"
-                        step="1" />
+                    <input v-model="price" :class="$style.placeholder" placeholder="E.j $10000" type="number" step="1" />
                     <span v-if="errors.price" class="error-message" style="color: red; font-size: 20px;">{{ errors.price
                         }}</span>
                 </div>
@@ -51,6 +51,8 @@
         </div>
 
     </section>
+</div>
+
 </template>
 
 <script>
@@ -139,6 +141,14 @@ export default {
 </script>
 
 <style module>
+.product-entry-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #f0f8ff; /* Azul claro */
+}
+
 .customerRegistrationFrame {
     width: 500px;
     display: flex;
@@ -160,15 +170,15 @@ export default {
     max-width: 100%;
     text-align: left;
     font-size: 22px;
-    color: var(--color-gray-200);
     font-family: var(--font-inter);
+    background-color: #f0f8ff; /* Azul claro */
 }
 
 .placeholder {
     font-size: 17px;
     color: #4F7396;
     border: 2px solid #D1DBE8;
-    background-color: #ededed;
+    background-color: #fffefe;
     padding: 10px;
     border-radius: 10px;
     width: 480px;
@@ -179,7 +189,7 @@ export default {
     font-size: 17px;
     color: #1d6ec0;
     border: 2px solid #D1DBE8;
-    background-color: #ededed;
+    background-color: #ffffff;
     padding: 10px;
     border-radius: 10px;
     width: 480px;

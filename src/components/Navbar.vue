@@ -41,6 +41,7 @@
     line-height: 21px;
     font-weight: 500;
     flex-shrink: 0;
+    
   }
   .linkIcon {
     height: 20px;
@@ -66,6 +67,8 @@
     justify-content: flex-end;
     max-width: 100%;
     font-size: var(--font-size-sm);
+    background-color: #f0f8ff; /* Azul claro */
+
   }
   .navbar {
     width: 1280px;
@@ -84,7 +87,8 @@
     max-width: 100%;
     text-align: left;
     font-size: var(--font-size-lg);
-    color: var(--color-gray-100);
     font-family: var(--font-manrope);
+    background-color: #f0f8ff; /* Azul claro */
+
   }
 </style>
