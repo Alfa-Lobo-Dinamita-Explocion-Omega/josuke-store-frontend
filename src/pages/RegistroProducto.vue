@@ -10,34 +10,40 @@
                     <div>Nombre del producto</div>
                     <div>
                         <input v-model="productName" :class="$style.placeholder" placeholder="E.j hamburguesa" type="text" />
-                        <span v-if="errors.productName" class="error-message" style="color: red; font-size: 20px;" >{{ errors.productName }}</span>
+                        <span v-if="errors.productName" class="error-message" style="color: red; font-size: 20px;">{{ errors.productName }}</span>
                     </div>
                 </div>
                 <div>Codigo del producto</div>
                 <div>
                     <input v-model="productCode" :class="$style.placeholder" placeholder="E.j 1234" type="text" />
-                    <span v-if="errors.productCode" class="error-message" style="color: red; font-size: 20px;" >{{ errors.productCode }}</span>
+                    <span v-if="errors.productCode" class="error-message" style="color: red; font-size: 20px;">{{errors.productCode }}</span>
                 </div>
                 <div>Precio</div>
                 <div>
-                  <input v-model="price"  :class="$style.placeholder" placeholder="E.j $10000" type="number" step="1"  />
-                  <span v-if="errors.price" class="error-message" style="color: red; font-size: 20px;" >{{ errors.price }}</span>
+                    <input v-model="price" :class="$style.placeholder" placeholder="E.j $10000" type="number"
+                        step="1" />
+                    <span v-if="errors.price" class="error-message" style="color: red; font-size: 20px;">{{ errors.price
+                        }}</span>
                 </div>
                 <div>Descripción</div>
-                <textarea v-model="productDescription" :class="$style.placeholder2"  placeholder="E.j hamburguesa sencilla con carne artesal, queso y tomate" ></textarea>
-                <span v-if="errors.productDescription" class="error-message" style="color: red; font-size: 20px;" >{{ errors.productDescription }}</span>
+                <textarea v-model="productDescription" :class="$style.placeholder2"
+                    placeholder="E.j hamburguesa sencilla con carne artesal, queso y tomate"></textarea>
+                <span v-if="errors.productDescription" class="error-message" style="color: red; font-size: 20px;">{{ errors.productDescription }}</span>
                 <div>Disponible</div>
                 <div>
                     <select v-model="isAvailable" :class="$style.placeholder">
                         <option value="true">Sí</option>
                         <option value="false">No</option>
                     </select>
-                    <span v-if="errors.isAvailable" class="error-message" style="color: red; font-size: 20px;" >{{ errors.isAvailable }}</span>
+                    <span v-if="errors.isAvailable" class="error-message" style="color: red; font-size: 20px;">{{ errors.isAvailable }}</span>
                 </div>
                 <div>URL imagen</div>
                 <div>
-                  <input v-model="urlProductImage" :class="$style.placeholder" placeholder="e.j: https://www.bing.com/images/create/un-gato-programador2c-que-parezca-real-no-una-caric/1-65e8b1de88e242f8a2bcdd4afaa8ca8e?id=QpuCq3bBBR3oOPLnPN7V6w%3d%3d&view=detailv2&idpp=genimg&thId=OIG1.0fLX69uNsKLML7OFKEUO&FORM=GCRIDP&mode=overlay" type="text" />
-                  <span v-if="errors.urlProductImage" class="error-message" style="color: red; font-size: 20px;" >{{ errors.urlProductImage }}</span>
+                    <input v-model="urlProductImage" :class="$style.placeholder"
+                        placeholder="e.j: https://www.bing.com/images/create/un-gato-programador2c-que-parezca-real-no-una-caric/1-65e8b1de88e242f8a2bcdd4afaa8ca8e?id=QpuCq3bBBR3oOPLnPN7V6w%3d%3d&view=detailv2&idpp=genimg&thId=OIG1.0fLX69uNsKLML7OFKEUO&FORM=GCRIDP&mode=overlay"
+                        type="text" />
+                    <span v-if="errors.urlProductImage" class="error-message" style="color: red; font-size: 20px;">{{
+                        errors.urlProductImage }}</span>
                 </div>
             </div>
             <button v-on:click="submitForm" :class="$style.bluebutton">Save</button>
@@ -54,14 +60,14 @@ export default {
     components: { Navbar },
 
     data() {
-        
+
         return {
             productCode: '',
             productName: '',
             productDescription: '',
-            price:'',
-            isAvailable:'',
-            urlProductImage:'',
+            price: '',
+            isAvailable: '',
+            urlProductImage: '',
             errors: {}
 
         }
@@ -73,12 +79,12 @@ export default {
             this.errors = {};
 
             if (!this.productName) {
-                this.errors.productName = 'El nombre del producto es obligatorio.';            
+                this.errors.productName = 'El nombre del producto es obligatorio.';
             }
             if (!this.productCode) {
                 this.errors.productCode = 'Código del producto es obligatorio.';
             }
-        
+
             if (!this.productDescription) {
                 this.errors.productDescription = 'Descripción del producto es obligatoria.';
             }
@@ -93,13 +99,14 @@ export default {
             if (!this.urlProductImage) {
                 this.errors.urlProductImage = 'URL de la imagen es obligatoria.';
             }
-    
 
-        if (this.errors.productName || this.errors.productCode  || this.errors.productDescription || this.errors.price || this.errors.isAvailable || this.errors.urlProductImage) {
+
+            if (this.errors.productName || this.errors.productCode || this.errors.productDescription || this.errors.price || this.errors.isAvailable || this.errors.urlProductImage) {
                 return;
             }
 
-            var payload = {
+
+            const payload = {
                 productCode: this.productCode,
                 productName: this.productName,
                 productDescription: this.productDescription,
@@ -107,10 +114,16 @@ export default {
                 isAvailable: this.isAvailable,
                 urlProductImage: this.urlProductImage
             };
-            await this.axios.post('/products', payload)
-            .then(response=> {
-                console.log(response)
-            });
+            try {
+
+                const response = await this.axios.post('/products', payload);
+                console.log(response);
+                console.log('Guardado exitosamente');
+            } catch (error) {
+                console.error('Error al enviar el formulario:', error);
+            }
+            alert(`Producto guardado exitosamente`);
+
 
             this.productCode = '';
             this.productName = '';
@@ -119,12 +132,13 @@ export default {
             this.isAvailable = '';
             this.urlProductImage = '';
         }
+
+
     }
 }
 </script>
 
 <style module>
-
 .customerRegistrationFrame {
     width: 500px;
     display: flex;
@@ -159,7 +173,6 @@ export default {
     border-radius: 10px;
     width: 480px;
     margin-bottom: 20px
-
 }
 
 .placeholder2 {
