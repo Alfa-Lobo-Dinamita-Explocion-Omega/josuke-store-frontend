@@ -3,33 +3,33 @@
     <Navbar />
     <section :class="$style.subframe">
         <div :class="$style.customerRegistrationFrame">
-            <h3>
+            <h3 :class="$style.tittles">
                 Ingresar producto
             </h3>
             <div>
                 <div>
-                    <div>Nombre del producto</div>
+                    <div :class="$style.tittles" >Nombre del producto</div>
                     <div>
                         <input v-model="productName" :class="$style.placeholder" placeholder="E.j hamburguesa" type="text" />
                         <span v-if="errors.productName" class="error-message" style="color: red; font-size: 20px;">{{ errors.productName }}</span>
                     </div>
                 </div>
-                <div>Codigo del producto</div>
+                <div :class="$style.tittles">Codigo del producto</div>
                 <div>
                     <input v-model="productCode" :class="$style.placeholder" placeholder="E.j 1234" type="text" />
                     <span v-if="errors.productCode" class="error-message" style="color: red; font-size: 20px;">{{errors.productCode }}</span>
                 </div>
-                <div>Precio</div>
+                <div :class="$style.tittles">Precio</div>
                 <div>
                     <input v-model="price" :class="$style.placeholder" placeholder="E.j $10000" type="number" step="1" />
                     <span v-if="errors.price" class="error-message" style="color: red; font-size: 20px;">{{ errors.price
                         }}</span>
                 </div>
-                <div>Descripción</div>
+                <div :class="$style.tittles">Descripción</div>
                 <textarea v-model="productDescription" :class="$style.placeholder2"
                     placeholder="E.j hamburguesa sencilla con carne artesal, queso y tomate"></textarea>
                 <span v-if="errors.productDescription" class="error-message" style="color: red; font-size: 20px;">{{ errors.productDescription }}</span>
-                <div>Disponible</div>
+                <div :class="$style.tittles">Disponible</div>
                 <div>
                     <select v-model="isAvailable" :class="$style.placeholder">
                         <option value="true">Sí</option>
@@ -37,7 +37,7 @@
                     </select>
                     <span v-if="errors.isAvailable" class="error-message" style="color: red; font-size: 20px;">{{ errors.isAvailable }}</span>
                 </div>
-                <div>URL imagen</div>
+                <div :class="$style.tittles">URL imagen</div>
                 <div>
                     <input v-model="urlProductImage" :class="$style.placeholder"
                         placeholder="e.j: https://www.bing.com/images/create/un-gato-programador2c-que-parezca-real-no-una-caric/1-65e8b1de88e242f8a2bcdd4afaa8ca8e?id=QpuCq3bBBR3oOPLnPN7V6w%3d%3d&view=detailv2&idpp=genimg&thId=OIG1.0fLX69uNsKLML7OFKEUO&FORM=GCRIDP&mode=overlay"
@@ -145,12 +145,11 @@ export default {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh;
-  background-color: #f0f8ff; /* Azul claro */
+  background-color: #e0e0e168;
 }
 
 .customerRegistrationFrame {
-    width: 500px;
+    width: 30%;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
@@ -160,18 +159,14 @@ export default {
 }
 
 .subframe {
-    align-self: stretch;
-    display: flex;
-    flex-direction: row;
-    align-items: flex-start;
-    justify-content: center;
-    padding: 0px var(--padding-xl) 0px 139px;
-    box-sizing: border-box;
-    max-width: 100%;
-    text-align: left;
-    font-size: 22px;
-    font-family: var(--font-inter);
-    background-color: #f0f8ff; /* Azul claro */
+  display: flex;
+  justify-content: center;
+  box-sizing: border-box;
+  text-align: left;
+  font-size: 22px;
+  background-image: url('../assets/fondopagina.jpeg'); 
+  background-size: 100%; /* Cubrir todo el contenedor .subframe */
+  background-position: center; /* Ajustar la posición de la imagen según sea necesario */
 }
 
 .placeholder {
@@ -181,7 +176,7 @@ export default {
     background-color: #fffefe;
     padding: 10px;
     border-radius: 10px;
-    width: 480px;
+    width: 200%;
     margin-bottom: 20px
 }
 
@@ -192,7 +187,7 @@ export default {
     background-color: #ffffff;
     padding: 10px;
     border-radius: 10px;
-    width: 480px;
+    width: 200%;
     height: 100px;
     margin-bottom: 20px
 }
@@ -205,5 +200,9 @@ export default {
     padding: 10px;
     border-radius: 10px;
     width: 480px;
+}
+
+.tittles{
+    color:rgb(255, 255, 255)
 }
 </style>

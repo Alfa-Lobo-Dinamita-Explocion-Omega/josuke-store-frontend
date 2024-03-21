@@ -60,18 +60,17 @@
   }
   .navegacion {
     height: 40px;
-    width: 1105.2px;
     display: flex;
     flex-direction: row;
     align-items: flex-start;
     justify-content: flex-end;
     max-width: 100%;
     font-size: var(--font-size-sm);
-    background-color: #f0f8ff; /* Azul claro */
+    background-color:  #17e4ebf6;; /* Azul claro */
 
   }
   .navbar {
-    width: 1280px;
+    width: 100%;
     border-bottom: 1px solid var(--color-gainsboro);
     box-sizing: border-box;
     display: flex;
@@ -88,7 +87,9 @@
     text-align: left;
     font-size: var(--font-size-lg);
     font-family: var(--font-manrope);
-    background-color: #f0f8ff; /* Azul claro */
+    background-color: #17e4ebf6; /* Azul claro */
 
   }
+
+  
 </style>

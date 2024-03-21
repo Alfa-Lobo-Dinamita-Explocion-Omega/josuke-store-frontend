@@ -2,26 +2,26 @@
   <Navbar />
   <section :class="$style.subframe">
     <div :class="$style.customerRegistrationFrame">
-      <h3>
+      <h3 :class="$style.tittles">
         Registro Clientes Josuke Store
       </h3>
-      <div>Nombre completo</div>
+      <div :class="$style.tittles">Nombre completo</div>
       <div>
         <input v-model="name" :class="$style.placeholder2" placeholder="Ingrese su nombre" type="text" />
         <span v-if="errors.name" class="error-message" style="color: red; font-size: 18px;">{{ errors.name }}</span>
       </div>
-      <div>Correo electronico</div>
+      <div :class="$style.tittles">Correo electronico</div>
       <div>
         <input v-model="email" :class="$style.placeholder2" placeholder="example@gmail.com" type="text" />
         <span v-if="errors.email" class="error-message" style="color: red; font-size: 18px;">{{ errors.email }}</span>
       </div>
-      <div>Nombre de usuario</div>
+      <div :class="$style.tittles">Nombre de usuario</div>
       <div>
         <input v-model="userName" :class="$style.placeholder2" placeholder="user123" type="text" />
         <span v-if="errors.userName" class="error-message"
           style="color: red; font-size: 18px;">{{ errors.userName }}</span>
       </div>
-      <div>Contraseña</div>
+      <div :class="$style.tittles">Contraseña</div>
       <div>
         <input v-model="password" :class="$style.placeholder2" placeholder="user123" type="password" />
         <span v-if="errors.password" class="error-message"
@@ -30,7 +30,7 @@
       <div :class="$style.lastNameInput">
         <div>
           <div>
-            <div>Telefono
+            <div :class="$style.tittles">Telefono
             </div>
             <div>
               <input v-model="phone" :class="$style.placeholder" placeholder="E.j: 340205335" type="number" step="1" />
@@ -40,7 +40,7 @@
         </div>
         <div>
           <div>
-            <div><Noscript></Noscript>N° de documento</div>
+            <div :class="$style.tittles"><Noscript></Noscript>N° de documento</div>
             <div>
               <input v-model="idUser" :class="$style.placeholder" placeholder="Ingrese N° de documento"  type="number" step="1" />
             </div>
@@ -49,14 +49,14 @@
           </div>
         </div>
       </div>
-      <div>Direccion</div>
+      <div :class="$style.tittles">Direccion</div>
       <div>
         <input v-model="address" :class="$style.placeholder2" placeholder="Ingrese su direccion" type="text" />
       </div>
       <div :class="$style.lastNameInput">
         <div>
           <div>
-            <div>Pais
+            <div :class="$style.tittles">Pais
             </div>
             <div>
               <input v-model="country" :class="$style.placeholder" placeholder="ingrese el nombre de su pais" type="text" />
@@ -65,7 +65,7 @@
         </div>
         <div>
           <div>
-            <div><Noscript></Noscript>Departamento</div>
+            <div :class="$style.tittles"><Noscript></Noscript>Departamento</div>
             <div>
               <input v-model="department" :class="$style.placeholder" placeholder="ej: antioquia" type="text" />
             </div>
@@ -75,7 +75,7 @@
       <div :class="$style.lastNameInput">
         <div>
           <div>
-            <div>Ciudad
+            <div :class="$style.tittles">Ciudad
             </div>
             <div>
               <input v-model="city" :class="$style.placeholder" placeholder="ej: medellin" type="text" />
@@ -84,7 +84,7 @@
         </div>
         <div>
           <div>
-            <div><Noscript></Noscript>Codigo postal</div>
+            <div :class="$style.tittles"><Noscript></Noscript>Codigo postal</div>
             <div>
               <input v-model="postalCode" :class="$style.placeholder" placeholder="Codigo postal" type="text" />
             </div>
@@ -234,17 +234,15 @@ export default {
 }
 
 .subframe {
-  align-self: stretch;
   display: flex;
   flex-direction: row;
-  align-items: flex-start;
   justify-content: center;
-  padding: 0px var(--padding-xl) 0px 139px;
   box-sizing: border-box;
-  max-width: 100%;
   text-align: left;
   font-size: 22px;
-  background-color: #f0f8ff; /* Azul claro */
+  background-image: url('../assets/fondopagina.jpeg'); 
+    background-size: 100%; /* Ajusta el tamaño de la imagen según sea necesario */
+  background-position: center; /* Ajusta la posición de la imagen según sea necesario */
   font-family: var(--font-inter);
 }
 
@@ -277,5 +275,8 @@ export default {
   padding: 10px;
   border-radius: 10px;
   width: 480px;
+}
+.tittles{
+    color:rgb(255, 255, 255)
 }
 </style>

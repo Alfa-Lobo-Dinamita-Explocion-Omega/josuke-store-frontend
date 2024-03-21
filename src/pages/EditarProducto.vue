@@ -1,45 +1,40 @@
 <template>
-
     <Navbar />
-
     <div :class="$style.container">
-    <div :class="$style.productContainer">
-        <h3 :class="$style.productos">Productos</h3>
-        <div :class="$style.searchProducts">Search products...</div>
-    </div>
+    <BuscarProductos />
 
     <section :class="$style.subframe">
         <div :class="$style.customerRegistrationFrame">
-            <h3>
+            <h3 :class="$style.tittles">
                 Modificar producto
             </h3>
             <div>
                 <div>
-                    <div>Nombre del producto</div>
+                    <div :class="$style.tittles">Nombre del producto</div>
                     <div>
                         <input v-model="productName" :class="$style.placeholder" placeholder="e.j hamburguesa" type="text" />
                     </div>
                 </div>
-                <div>Codigo del producto</div>
+                <div :class="$style.tittles">Codigo del producto</div>
                 <div>
                     <input v-model="productCode" :class="$style.placeholder" placeholder="e.j 1234" type="text" />
                 </div>
-                <div>Precio</div>
+                <div :class="$style.tittles">Precio</div>
                 <div>
                     <input v-model="price" :class="$style.placeholder" placeholder="$0.0" type="text" />
                 </div>
-                <div>Descripción</div>
+                <div :class="$style.tittles">Descripción</div>
                 <textarea v-model="productDescription" :class="$style.placeholder2"
                     placeholder="e.j hamburguesa sencilla con carne artesal, queso y tomate"></textarea>
 
-                <div>Disponible</div>
+                <div :class="$style.tittles">Disponible</div>
                 <div>
                     <select v-model="isAvailable" :class="$style.placeholder">
                         <option value="1">Sí</option>
                         <option value="0">No</option>
                     </select>
                 </div>
-                <div>URL imagen</div>
+                <div :class="$style.tittles">URL imagen</div>
                 <div>
                   <input v-model="urlProductImage" :class="$style.placeholder" placeholder="e.j: https://www.bing.com/images/create/un-gato-programador2c-que-parezca-real-no-una-caric/1-65e8b1de88e242f8a2bcdd4afaa8ca8e?id=QpuCq3bBBR3oOPLnPN7V6w%3d%3d&view=detailv2&idpp=genimg&thId=OIG1.0fLX69uNsKLML7OFKEUO&FORM=GCRIDP&mode=overlay" type="text" />
                 </div>
@@ -55,9 +50,9 @@
 
 <script>
 import Navbar from "../components/Navbar.vue";
-
+import BuscarProductos from "../components/BuscarProductos.vue";
 export default {
-    components: { Navbar },
+    components: { Navbar ,BuscarProductos },
 
     data() {
         return {
@@ -97,10 +92,11 @@ export default {
     justify-content: center;
     padding: 0px var(--padding-xl) 0px 139px;
     box-sizing: border-box;
-    max-width: 100%;
     text-align: left;
     font-size: 22px;
-    background-color: #f0f8ff; /* Azul claro */
+    background-image: url('../assets/fondopagina.jpeg'); 
+  background-size: 100%; /* Cubrir todo el contenedor .subframe */
+  background-position: center; /* Ajustar la posición de la imagen según sea necesario */
     font-family: var(--font-inter);
 }
 
@@ -172,5 +168,9 @@ export default {
 
 .subframe {
   flex: 1; /* El contenedor de la subsección ocupará el espacio disponible */
+}
+
+.tittles{
+    color:rgb(255, 255, 255)
 }
 </style>
