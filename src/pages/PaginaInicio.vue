@@ -36,11 +36,21 @@
     },
   
     methods: {
-      login() {
+      async login() {
         if (!this.userName || !this.password) {
           this.errorMessage = 'Por favor ingrese su nombre de usuario y contraseña.';
         } else {
-          // enviar los datos de inicio de sesión al servidor
+          const payload = {
+                userName: this.userName,
+                password: this.password,
+          };
+          try {
+            const response = await this.axios.post('/auth/login', payload);
+            console.log(response);
+          } catch (error) {
+            console.error('Error al enviar el formulario:', error);
+          }
+          alert('sesión iniciada');
         }
       }
     }
