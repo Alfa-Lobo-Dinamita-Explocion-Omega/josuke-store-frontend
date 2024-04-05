@@ -61,34 +61,20 @@
   .navegacion {
     height: 40px;
     display: flex;
-    flex-direction: row;
-    align-items: flex-start;
     justify-content: flex-end;
     max-width: 100%;
     font-size: var(--font-size-sm);
-    background-color:  #17e4ebf6;; /* Azul claro */
+    background-color:#b4b4b4cc; 
+
 
   }
   .navbar {
     width: 100%;
-    border-bottom: 1px solid var(--color-gainsboro);
     box-sizing: border-box;
     display: flex;
-    flex-direction: row;
     align-items: center;
     justify-content: space-between;
-    padding: var(--padding-xs) var(--padding-21xl);
-    top: 0;
-    z-index: 99;
-    position: sticky;
-    gap: var(--gap-0);
-    row-gap: 20px;
-    max-width: 100%;
-    text-align: left;
-    font-size: var(--font-size-lg);
-    font-family: var(--font-manrope);
-    background-color: #17e4ebf6; /* Azul claro */
-
+    background-color: #9f9f9fcc; 
   }
 
   

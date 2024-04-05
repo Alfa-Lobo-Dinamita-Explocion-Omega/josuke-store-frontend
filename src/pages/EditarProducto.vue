@@ -1,9 +1,9 @@
 <template>
     <Navbar />
-    <div :class="$style.container">
-    <BuscarProductos />
-
     <section :class="$style.subframe">
+        <div :class="$style.buscarProductos">
+        <BuscarProductos @product-selected="loadProductInfo" />
+        </div>
         <div :class="$style.customerRegistrationFrame">
             <h3 :class="$style.tittles">
                 Modificar producto
@@ -15,7 +15,7 @@
                         <input v-model="productName" :class="$style.placeholder" placeholder="e.j hamburguesa" type="text" />
                     </div>
                 </div>
-                <div :class="$style.tittles">Codigo del producto</div>
+                <div :class="$style.tittles">Código del producto</div>
                 <div>
                     <input v-model="productCode" :class="$style.placeholder" placeholder="e.j 1234" type="text" />
                 </div>
@@ -42,7 +42,6 @@
             <button @click="submitForm" :class="$style.bluebutton">Save</button>
         </div>
     </section>
-</div>
 
 
 
@@ -65,8 +64,16 @@ export default {
         }
     },
     methods: {
-
+        loadProductInfo(product) {
+      this.productCode = product.productCode;
+      this.productName = product.productName;
+      this.productDescription =product.productDescription;
+      this.price =product.price;
+      this.isAvailable =product.isAvailable;
+      this.urlProductImage =product.urlProductImage;
+    },
         submitForm() {
+          // Método para enviar el formulario (robison)
 
         }
     }
@@ -75,29 +82,19 @@ export default {
 
 <style module>
 .customerRegistrationFrame {
-    width: 500px;
+    width: 600px;
+    margin: auto;
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
-    justify-content: flex-start;
-    gap: 10px 0px;
-    max-width: 100%;
+    background-color: rgba(79, 79, 79, 0.841);
+    margin-top: 20px;
 }
 
 .subframe {
-    align-self: stretch;
     display: flex;
-    flex-direction: row;
-    align-items: flex-start;
-    justify-content: center;
-    padding: 0px var(--padding-xl) 0px 139px;
-    box-sizing: border-box;
-    text-align: left;
     font-size: 22px;
     background-image: url('../assets/fondopagina.jpeg'); 
-  background-size: 100%; /* Cubrir todo el contenedor .subframe */
-  background-position: center; /* Ajustar la posición de la imagen según sea necesario */
-    font-family: var(--font-inter);
+    background-size: 50%; /* Cubrir todo el contenedor .subframe */
 }
 
 .placeholder {
@@ -108,7 +105,7 @@ export default {
     padding: 10px;
     border-radius: 10px;
     width: 480px;
-    margin-bottom: 20px
+    margin-bottom: 10px;
 }
 
 .placeholder2 {
@@ -120,7 +117,8 @@ export default {
     border-radius: 10px;
     width: 480px;
     height: 100px;
-    margin-bottom: 20px
+    margin-bottom: 10px;
+
 }
 
 .bluebutton {
@@ -131,6 +129,10 @@ export default {
     padding: 10px;
     border-radius: 10px;
     width: 480px;
+    align-self: center;
+    margin-bottom: 20px;
+    margin-top: 20px;
+
 }
 
 
@@ -149,28 +151,39 @@ export default {
     background-color: #c8dee4;
     overflow: hidden;
     flex-shrink: 0;
-    display: flex;
     flex-direction: column;
-    align-items: flex-start;
-    justify-content: flex-start;
     padding: 61px 35px 590px;
     box-sizing: border-box;
-    gap: 50px 0px;
+    
+    
 }
 
-.container {
-  display: flex; /* Utilizamos flexbox */
-}
+
 
 .product-container {
-  flex: 1; /* El contenedor de productos ocupará el espacio disponible */
+  flex: 1; 
 }
 
-.subframe {
-  flex: 1; /* El contenedor de la subsección ocupará el espacio disponible */
-}
 
 .tittles{
-    color:rgb(255, 255, 255)
+    color:rgb(255, 255, 255);
+
+}
+
+.buscarProductos{
+  margin-top: 20px;
+  text-align: center;
+  width: 25%;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  padding: 35px;
+  box-sizing: border-box;
+  gap: 20px;
+  height: 700px;
+  background-color: rgba(79, 79, 79, 0.841);
+  border-radius: 10px;
 }
 </style>

@@ -10,7 +10,7 @@
         <input v-model="name" :class="$style.placeholder2" placeholder="Ingrese su nombre" type="text" />
         <span v-if="errors.name" class="error-message" style="color: red; font-size: 18px;">{{ errors.name }}</span>
       </div>
-      <div :class="$style.tittles">Correo electronico</div>
+      <div :class="$style.tittles">Correo electrónico</div>
       <div>
         <input v-model="email" :class="$style.placeholder2" placeholder="example@gmail.com" type="text" />
         <span v-if="errors.email" class="error-message" style="color: red; font-size: 18px;">{{ errors.email }}</span>
@@ -30,7 +30,7 @@
       <div :class="$style.lastNameInput">
         <div>
           <div>
-            <div :class="$style.tittles">Telefono
+            <div :class="$style.tittles">Teléfono
             </div>
             <div>
               <input v-model="phone" :class="$style.placeholder" placeholder="E.j: 340205335" type="number" step="1" />
@@ -49,14 +49,14 @@
           </div>
         </div>
       </div>
-      <div :class="$style.tittles">Direccion</div>
+      <div :class="$style.tittles">Dirección</div>
       <div>
         <input v-model="address" :class="$style.placeholder2" placeholder="Ingrese su direccion" type="text" />
       </div>
       <div :class="$style.lastNameInput">
         <div>
           <div>
-            <div :class="$style.tittles">Pais
+            <div :class="$style.tittles">País
             </div>
             <div>
               <input v-model="country" :class="$style.placeholder" placeholder="ingrese el nombre de su pais" type="text" />
@@ -84,14 +84,14 @@
         </div>
         <div>
           <div>
-            <div :class="$style.tittles"><Noscript></Noscript>Codigo postal</div>
+            <div :class="$style.tittles"><Noscript></Noscript>Código postal</div>
             <div>
               <input v-model="postalCode" :class="$style.placeholder" placeholder="Codigo postal" type="text" />
             </div>
           </div>
         </div>
       </div>
-      <button v-on:click="submitForm" :class="$style.bluebutton">registar</button>
+      <button v-on:click="submitForm" :class="$style.bluebutton">Registar</button>
 
     </div>
 
@@ -213,37 +213,27 @@ export default {
 
 <style module>
 .lastNameInput {
-  align-self: stretch;
   display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  align-items: flex-start;
-  justify-content: flex-start;
   gap: 0px 25px;
+  justify-content: center;
 }
 
 
-.customerRegistrationFrame {
-  width: 500px;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  justify-content: flex-start;
-  gap: 10px 0px;
-  max-width: 100%;
+.customerRegistrationFrame { 
+  text-align: center;
+  width: 600px;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    background-color: rgba(79, 79, 79, 0.841);
+  margin-top: 20px;
 }
 
 .subframe {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  box-sizing: border-box;
-  text-align: left;
-  font-size: 22px;
-  background-image: url('../assets/fondopagina.jpeg'); 
-    background-size: 100%; /* Ajusta el tamaño de la imagen según sea necesario */
-  background-position: center; /* Ajusta la posición de la imagen según sea necesario */
-  font-family: var(--font-inter);
+    display: flex;
+    font-size: 22px;
+    background-image: url('../assets/fondopagina.jpeg'); 
+    background-size: 50%; /* Cubrir todo el contenedor .subframe */
 }
 
 .placeholder {
@@ -268,14 +258,18 @@ export default {
 }
 
 .bluebutton {
-  font-size: 17px;
-  color: #ffffff;
-  border: 2px solid #D1DBE8;
-  background-color: #0b6ce2;
-  padding: 10px;
-  border-radius: 10px;
-  width: 480px;
+    font-size: 17px;
+    color: #ffffff;
+    border: 2px solid #D1DBE8;
+    background-color: #0b6ce2;
+    padding: 10px;
+    border-radius: 10px;
+    width: 480px;
+    align-self: center;
+    margin-bottom: 20px;
+    margin-top: 20px;
 }
+
 .tittles{
     color:rgb(255, 255, 255)
 }

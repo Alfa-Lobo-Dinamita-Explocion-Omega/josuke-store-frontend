@@ -1,5 +1,4 @@
 <template>
-      <div class="product-entry-container">
     <Navbar />
     <section :class="$style.subframe">
         <div :class="$style.customerRegistrationFrame">
@@ -14,7 +13,7 @@
                         <span v-if="errors.productName" class="error-message" style="color: red; font-size: 20px;">{{ errors.productName }}</span>
                     </div>
                 </div>
-                <div :class="$style.tittles">Codigo del producto</div>
+                <div :class="$style.tittles">Código del producto</div>
                 <div>
                     <input v-model="productCode" :class="$style.placeholder" placeholder="E.j 1234" type="text" />
                     <span v-if="errors.productCode" class="error-message" style="color: red; font-size: 20px;">{{errors.productCode }}</span>
@@ -51,7 +50,6 @@
         </div>
 
     </section>
-</div>
 
 </template>
 
@@ -141,34 +139,22 @@ export default {
 </script>
 
 <style module>
-.product-entry-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: #e0e0e168;
-}
 
 .customerRegistrationFrame {
-    width: 30%;
+    width: 600px;
+    margin: auto;
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
-    justify-content: flex-start;
-    gap: 10px 0px;
-    max-width: 100%;
-}
+    background-color: rgba(79, 79, 79, 0.841);
+    margin-top: 20px;
 
+}
 .subframe {
-  display: flex;
-  justify-content: center;
-  box-sizing: border-box;
-  text-align: left;
-  font-size: 22px;
-  background-image: url('../assets/fondopagina.jpeg'); 
-  background-size: 100%; /* Cubrir todo el contenedor .subframe */
-  background-position: center; /* Ajustar la posición de la imagen según sea necesario */
+    display: flex;
+    font-size: 22px;
+    background-image: url('../assets/fondopagina.jpeg'); 
+    background-size: 50%; /* Cubrir todo el contenedor .subframe */
 }
-
 .placeholder {
     font-size: 17px;
     color: #4F7396;
@@ -176,8 +162,8 @@ export default {
     background-color: #fffefe;
     padding: 10px;
     border-radius: 10px;
-    width: 200%;
-    margin-bottom: 20px
+    width: 480px;
+    margin-bottom: 10px;
 }
 
 .placeholder2 {
@@ -187,9 +173,10 @@ export default {
     background-color: #ffffff;
     padding: 10px;
     border-radius: 10px;
-    width: 200%;
+    width: 480px;
     height: 100px;
-    margin-bottom: 20px
+    margin-bottom: 10px;
+
 }
 
 .bluebutton {
@@ -200,6 +187,9 @@ export default {
     padding: 10px;
     border-radius: 10px;
     width: 480px;
+    align-self: center;
+    margin-bottom: 20px;
+    margin-top: 20px;
 }
 
 .tittles{
