@@ -46,7 +46,9 @@
           };
           try {
             const response = await this.axios.post('/auth/login', payload);
-            console.log(response);
+            console.log(response)
+            localStorage.setItem('token',response.data.jWttoken);
+          
           } catch (error) {
             console.error('Error al enviar el formulario:', error);
           }
