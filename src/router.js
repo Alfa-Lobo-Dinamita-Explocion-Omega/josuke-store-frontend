@@ -1,9 +1,10 @@
 // router.js
 import { createRouter, createWebHistory } from 'vue-router';
-import RegistroProducto from './pages/RegistroProducto.vue';
-import RegistroCliente from './pages/RegistroCliente.vue';
-import PaginaInicio from './pages/PaginaInicio.vue';
-import EditarProducto from './pages/EditarProducto.vue';
+import RegistroProducto from './pagesAdmin/RegistroProducto.vue';
+import RegistroCliente from './pagesAdmin/RegistroCliente.vue';
+import PaginaInicio from './pagesAdmin/PaginaInicio.vue';
+import EditarProducto from './pagesAdmin/EditarProducto.vue';
+import ComprarProductos from './pagesUser/ComprarProductos.vue';
 
 const routes = [
   {
@@ -25,6 +26,11 @@ const routes = [
     path: '/RegistroProducto',
     name: 'RegistroProducto',
     component: RegistroProducto
+  },
+  {
+    path: '/ComprarProductos',
+    name: 'ComprarProductos',
+    component: ComprarProductos
   }
 ];
 

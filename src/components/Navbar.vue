@@ -4,7 +4,7 @@
     <div :class="$style.navegacion">
       <div :class="$style.derecha">
         <router-link :to="{ name: 'PaginaInicio' }" :class="$style.link">Inicio</router-link>
-        <div :class="$style.link">Ordenes</div>
+        <router-link :to="{ name: 'ComprarProductos' }" :class="$style.link">Ordenes</router-link>
         <router-link :to="{ name: 'RegistroProducto' }" :class="$style.link">Producto</router-link>
         <router-link :to="{ name: 'EditarProducto' }" :class="$style.link">Producto</router-link>
         <div :class="$style.link">Menu</div>
