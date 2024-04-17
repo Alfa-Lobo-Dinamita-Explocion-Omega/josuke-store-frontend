@@ -30,8 +30,8 @@
                 <div :class="$style.tittles">Disponible</div>
                 <div>
                     <select v-model="isAvailable" :class="$style.placeholder">
-                        <option value="1">Sí</option>
-                        <option value="0">No</option>
+                        <option value="true">Sí</option>
+                        <option value="false">No</option>
                     </select>
                 </div>
                 <div :class="$style.tittles">URL imagen</div>
@@ -65,16 +65,69 @@ export default {
     },
     methods: {
         loadProductInfo(product) {
-      this.productCode = product.productCode;
-      this.productName = product.productName;
-      this.productDescription =product.productDescription;
-      this.price =product.price;
-      this.isAvailable =product.isAvailable;
-      this.urlProductImage =product.urlProductImage;
-    },
-        submitForm() {
-          // Método para enviar el formulario (robison)
+            this.id= product.id;
+            this.productCode = product.productCode;
+            this.productName = product.productName;
+            this.productDescription =product.productDescription;
+            this.price =product.price;
+            this.isAvailable =product.isAvailable;
+            this.urlProductImage =product.urlProductImage;
+        },
+        async submitForm() {
+            this.errors = {};
 
+            if (!this.productName) {
+                this.errors.productName = 'El nombre del producto es obligatorio.';
+            }
+            if (!this.productCode) {
+                this.errors.productCode = 'Código del producto es obligatorio.';
+            }
+
+            if (!this.productDescription) {
+                this.errors.productDescription = 'Descripción del producto es obligatoria.';
+            }
+            if (!this.price) {
+                this.errors.price = 'Precio del producto es obligatorio.';
+            } else if (isNaN(parseFloat(this.price))) {
+                this.errors.price = 'El precio debe ser un número válido.';
+            }
+            if (!this.isAvailable) {
+                this.errors.isAvailable = 'Disponibilidad del producto es obligatoria.';
+            }
+            if (!this.urlProductImage) {
+                this.errors.urlProductImage = 'URL de la imagen es obligatoria.';
+            }
+
+
+            if (this.errors.productName || this.errors.productCode || this.errors.productDescription || this.errors.price || this.errors.isAvailable || this.errors.urlProductImage) {
+                return;
+            }
+
+
+            const payload = {
+                id: this.id,
+                productCode: this.productCode,
+                productName: this.productName,
+                productDescription: this.productDescription,
+                price: this.price,
+                isAvailable: this.isAvailable,
+                urlProductImage: this.urlProductImage
+            };
+            try {
+
+                const response = await this.axios.put('/products', payload);
+                console.log(response);
+                alert(`Producto actualizado exitosamente`); 
+            } catch (error) {
+                console.error('Error al enviar el formulario:', error);
+            }
+            
+            this.productCode = '';
+            this.productName = '';
+            this.productDescription = '';
+            this.price = '';
+            this.isAvailable = '';
+            this.urlProductImage = '';
         }
     }
 }
