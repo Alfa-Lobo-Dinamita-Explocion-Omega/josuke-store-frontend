@@ -1,5 +1,4 @@
 <template>
-  <Navbar />
   <section :class="$style.subframe">
     <div :class="$style.customerRegistrationFrame">
       <h3 :class="$style.tittles">
@@ -92,6 +91,10 @@
         </div>
       </div>
       <button v-on:click="submitForm" :class="$style.bluebutton">Registar</button>
+      <router-link :to="{name: 'PaginaInicio'}">
+        <button :class="$style.redbutton">Cancelar</button>
+      </router-link>
+      
 
     </div>
 
@@ -99,11 +102,7 @@
 </template>
 
 <script>
-import Navbar from "../components/Navbar.vue";
-
 export default {
-  components: { Navbar },
-
   data() {
     return {
       name: '',
@@ -177,12 +176,12 @@ export default {
 
         const response = await this.axios.post('/users', payload);
         console.log(response);
-        console.log('Guardado exitosamente');
+        alert(`usuario guardado exitosamente`);
+
       } catch (error) {
         console.error('Error al enviar el formulario:', error);
       }
-      alert(`usuario guardado exitosamente`);
-
+      
       this.name = '';
       this.email = '';
       this.userName = '';
@@ -262,6 +261,18 @@ export default {
     color: #ffffff;
     border: 2px solid #D1DBE8;
     background-color: #0b6ce2;
+    padding: 10px;
+    border-radius: 10px;
+    width: 480px;
+    align-self: center;
+    margin-bottom: 20px;
+    margin-top: 20px;
+}
+.redbutton{
+  font-size: 17px;
+    color: #ffffff;
+    border: 2px solid #D1DBE8;
+    background-color: #e20b0b;
     padding: 10px;
     border-radius: 10px;
     width: 480px;

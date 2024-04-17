@@ -7,15 +7,6 @@
         <router-link :to="{ name: 'ComprarProductos' }" :class="$style.link">Ordenes</router-link>
         <router-link :to="{ name: 'RegistroProducto' }" :class="$style.link">Producto</router-link>
         <router-link :to="{ name: 'EditarProducto' }" :class="$style.link">Producto</router-link>
-        <div :class="$style.link">Menu</div>
-        <router-link :to="{ name: 'RegistroCliente' }" :class="$style.link">Registro</router-link>
-
-        <img
-          :class="$style.linkIcon"
-          loading="lazy"
-          alt=""
-          src="/vector--0.svg"
-        />
       </div>
     </div>
   </header>
