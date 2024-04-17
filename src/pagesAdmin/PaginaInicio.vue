@@ -1,5 +1,4 @@
 <template>
-    <Navbar />
     <div class="login-container">
       <section class="login-section">
         <div class="login-form">
@@ -15,6 +14,11 @@
           <div class="input-group">
             <button @click="login">Iniciar sesión</button>
           </div>
+          <div class="input-group">
+            <router-link :to="{name: 'RegistroCliente'}">
+              <button >Registrarse</button>
+            </router-link>
+          </div>
           <div v-if="errorMessage" class="error-message">{{ errorMessage }}</div>
         </div>
       </section>
@@ -22,11 +26,8 @@
   </template>
   
   <script>
-  import Navbar from "../components/Navbar.vue";
-  
+  import VueJwtDecode from 'vue-jwt-decode'
   export default {
-    components: { Navbar },
-  
     data() {
       return {
         userName: '',
@@ -48,11 +49,22 @@
             const response = await this.axios.post('/auth/login', payload);
             console.log(response)
             localStorage.setItem('token',response.data.jWttoken);
-          
+            alert('sesión iniciada');
+            
+              const decodedToken = VueJwtDecode.decode(response.data.jWttoken);
+              if(decodedToken.role==="CLIENT"){
+                this.$router.push('/ComprarProductos');
+              }
+              else{
+                this.$router.push('/EditarProducto');
+              }
+            
+            
           } catch (error) {
             console.error('Error al enviar el formulario:', error);
+            
           }
-          alert('sesión iniciada');
+          
         }
       }
     }
