@@ -3,8 +3,7 @@
       <b :class="$style.josukeStore">Josuke Store</b>
       <div :class="$style.navegacion">
         <div :class="$style.derecha">
-          <div :class="$style.link">Ordenes</div>
-          <router-link :to="{ name: 'ComprarProductos' }" :class="$style.link">Producto</router-link>
+          <router-link :to="{ name: 'ComprarProductos' }" :class="$style.link">Pedidos</router-link>
           <div :class="$style.link">Menu</div>
   
           <img
