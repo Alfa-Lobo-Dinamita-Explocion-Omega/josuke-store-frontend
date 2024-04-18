@@ -1,18 +1,40 @@
 <template>
-    <NavbarCliente/>
-
   <div>
+    <NavbarCliente/>
     <div class="container">
       <div class="product-list">
         <div v-for="(product) in products" :key="product.id" class="product-card">
-          <img :src="product.urlProductImage" alt="Product Image">
+          <img :src="product.urlProductImage" alt="Product Image" class="product-image"> <!-- Añadida la clase 'product-image' -->
           <h3>{{ product.productName }}</h3>
-          <p>{{ product.productDescription }}</p>
+          <p class="descripcion" >{{ product.productDescription }}</p>
           <p>Precio: {{ product.price }}</p>
           <button @click="addToCart(product)">Agregar al carrito</button>
         </div>
       </div>
-      <div class="sidebar"></div>
+      <div class="sidebar">
+        <h2>Detalles de la compra</h2>
+        <table>
+          <thead>
+            <tr>
+              <th style="padding-left: 20px; padding-right: 150px;" >Producto</th>
+              <th style="padding-right: 50px;">Precio</th>
+              <th style="padding-right: 50px; text-align: center; ">Cantidad</th>
+              <th>Total</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr v-for="(item, index) in cart" :key="index">
+              <td style="padding-left: 20px; text-align: left;" >{{ item.productName }}</td>
+              <td  style="text-align: left;">{{ item.price }}</td>
+              <td >{{ item.quantity }}</td>
+              <td  style="text-align: left;">{{ item.price * item.quantity }}</td>
+            </tr>
+          </tbody>
+        </table>
+        <div class="total">
+          Total de la compra: {{ calculateTotal() }}
+        </div>
+      </div>
     </div>
     <div class="pagination">
       <button @click="loadPreviousPage" :disabled="pageNumber === 1">Anterior</button>
@@ -33,7 +55,8 @@ export default {
     return {
       products: [],
       pageNumber: 1,
-      totalPages: 0
+      totalPages: 0,
+      cart: [] // Agregamos un array para manejar el carrito
     };
   },
   mounted() {
@@ -61,9 +84,25 @@ export default {
         this.fetchProducts();
       }
     },
-    //addToCart(product) {
-      // Lógica para agregar el producto al carrito
-    //}
+    addToCart(product) {
+      // Verificamos si el producto ya está en el carrito
+      const existingItemIndex = this.cart.findIndex(item => item.id === product.id);
+      if (existingItemIndex !== -1) {
+        // Si el producto ya está en el carrito, incrementamos la cantidad
+        this.cart[existingItemIndex].quantity++;
+      } else {
+        // Si el producto no está en el carrito, lo agregamos con cantidad 1
+        this.cart.push({
+          id: product.id,
+          productName: product.productName,
+          price: product.price,
+          quantity: 1
+        });
+      }
+    },
+    calculateTotal() {
+      return this.cart.reduce((total, item) => total + item.price * item.quantity, 0);
+    }
   }
 };
 </script>
@@ -86,7 +125,7 @@ export default {
   margin: 0 5px 20px 5px;
   box-sizing: border-box;
   border: 1px solid #ccc;
-  height: 250px;
+  height: 450px;
 }
 
 .sidebar {
@@ -96,11 +135,25 @@ export default {
   width: 30px;
 }
 
+.product-image {
+  max-width: 100%; 
+  max-height: 150px; 
+}
+
+.total {
+  margin-top: 20px;
+  font-weight: bold;
+}
+
 .pagination {
   margin-top: 20px;
 }
 
 .pagination button {
   margin-right: 10px;
+}
+
+.descripcion {
+  text-align: justify;
 }
 </style>
