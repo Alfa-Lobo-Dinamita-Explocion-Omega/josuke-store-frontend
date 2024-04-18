@@ -46,7 +46,12 @@
                 password: this.password,
           };
           try {
-            const response = await this.axios.post('/auth/login', payload);
+            const config = {
+              headers: {
+                'Authorization': null
+              }
+            };
+            const response = await this.axios.post('/auth/login', payload,config);
             console.log(response)
             localStorage.setItem('token',response.data.jWttoken);
             alert('sesión iniciada');
