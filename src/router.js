@@ -8,12 +8,12 @@ import ComprarProductos from './pagesUser/ComprarProductos.vue';
 
 const routes = [
   {
-    path: '/',
+    path: '/RegistroCliente',
     name: 'RegistroCliente',
     component: RegistroCliente
   },
   {
-    path: '/PaginaInicio',
+    path: '/',
     name: 'PaginaInicio',
     component: PaginaInicio
   },

@@ -132,7 +132,6 @@ export default {
   flex: 1;
   background-color: #ccc;
   height: 600px;
-  width: 30px;
 }
 
 .product-image {
