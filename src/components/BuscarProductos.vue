@@ -28,11 +28,7 @@ export default defineComponent({
   methods: {
     async searchProducts() {
       try {
-<<<<<<< HEAD
-        const response = await axios.get('/products/?term=${this.searchQuery}');
-=======
         const response = await axios.get(`/products?term=${this.searchQuery}`);
->>>>>>> 92b5087cb9cb6651e6a40834f903f0df817ca3d4
         this.searchResults = response.data;
       } catch (error) {
         console.error("Error fetching products:", error);

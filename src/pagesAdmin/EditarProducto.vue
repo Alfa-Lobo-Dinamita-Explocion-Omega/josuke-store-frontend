@@ -30,8 +30,8 @@
                 <div :class="$style.tittles">Disponible</div>
                 <div>
                     <select v-model="isAvailable" :class="$style.placeholder">
-                        <option value="1">Sí</option>
-                        <option value="0">No</option>
+                        <option value="true">Sí</option>
+                        <option value="false">No</option>
                     </select>
                 </div>
                 <div :class="$style.tittles">URL imagen</div>
