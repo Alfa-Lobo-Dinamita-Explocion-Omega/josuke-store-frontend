@@ -54,7 +54,7 @@ export default {
   data() {
     return {
       products: [],
-      pageNumber: 1,
+      pageNumber: 0,
       totalPages: 0,
       cart: [] // Agregamos un array para manejar el carrito
     };
