@@ -38,8 +38,8 @@
     </div>
     <div class="pagination">
       <button @click="loadPreviousPage" :disabled="pageNumber === 1">Anterior</button>
-      <span>Página {{ pageNumber }} de {{ totalPages -1}}</span>
-      <button @click="loadNextPage" :disabled="pageNumber === totalPages">Siguiente</button>
+      <span>Página {{ pageNumber }} de {{ totalPages}}</span>
+      <button @click="loadNextPage" :disabled="pageNumber === totalPages-1">Siguiente</button>
     </div>
   </div>
 </template>

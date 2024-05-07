@@ -7,7 +7,7 @@ import axios from 'axios'
 
 import Vueaxios from 'vue-axios'
 
-axios.defaults.baseURL = 'https://josuke-store-backend.vercel.app'
+axios.defaults.baseURL = 'https://josuke-store-backend-production-5ef6.up.railway.app'
 
 var token = localStorage.getItem('token');
 if (token)
