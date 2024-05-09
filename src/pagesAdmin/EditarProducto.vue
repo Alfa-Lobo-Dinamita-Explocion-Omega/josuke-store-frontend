@@ -220,7 +220,6 @@ export default {
 
 .tittles{
     color:rgb(255, 255, 255);
-
 }
 
 .buscarProductos{
