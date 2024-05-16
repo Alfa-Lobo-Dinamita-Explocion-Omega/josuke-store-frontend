@@ -1,57 +1,59 @@
 <template>
   <section class="subframe">
-  <div>
-    <NavbarCliente />
-    <div class="container">
-      <div class="product-list">
-        <div v-for="(product) in products" :key="product.id" class="product-card">
-          <img :src="product.urlProductImage" alt="Product Image" class="product-image">
-          <!-- Añadida la clase 'product-image' -->
-          <h3>{{ product.productName }}</h3>
-          <p class="descripcion">{{ product.productDescription }}</p>
-          <p>Precio: {{ product.price }}</p>
-          <button class="bluebutton" @click="addToCart(product)">Agregar al carrito</button>
+    <div>
+      <NavbarCliente />
+      <div class="container">
+        <div class="product-list">
+          <div v-for="(product) in products" :key="product.id" class="product-card">
+            <img :src="product.urlProductImage" alt="Product Image" class="product-image">
+            <!-- Añadida la clase 'product-image' -->
+            <h3>{{ product.productName }}</h3>
+            <p class="descripcion">{{ product.productDescription }}</p>
+            <p>Precio: {{ product.price }}</p>
+            <button class="bluebutton" @click="addToCart(product)">Agregar al carrito</button>
+          </div>
+          <div class="pagination">
+            <button class="bluebutton" @click="loadPreviousPage" :disabled="pageNumber === 1">Anterior</button>
+            <span style="color: #dcdbdb;">Página {{ pageNumber }} de {{ totalPages }}</span>
+            <button class="bluebutton" @click="loadNextPage"
+              :disabled="pageNumber === totalPages - 1">Siguiente</button>
+          </div>
+        </div>
+        <div class="sidebar">
+          <h2>Detalles de la compra</h2>
+          <table>
+            <thead>
+              <tr>
+                <th style="padding-left: 20px; padding-right: 150px;">Producto</th>
+                <th style="padding-right: 50px;">Precio</th>
+                <th style="padding-right: 50px; text-align: center; ">Cantidad</th>
+                <th>Total</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr v-for="(item, index) in cart" :key="index">
+                <td style="padding-left: 20px; text-align: left;">{{ item.productName }}</td>
+                <td style="text-align: left;">{{ item.price }}</td>
+                <td style="text-align: left;">
+                  <input type="number" v-model="item.quantity" @input="updateQuantity(index, $event)"
+                    style=" width: 50px; margin: auto;">
+                </td>
+                <td style="text-align: left;">{{ item.price * item.quantity }}</td>
+                <td style="text-align: left;">
+                  <button class="bluebutton" @click="eliminarProducto(index)">Eliminar</button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+          <div class="total">
+            Total de la compra: {{ calculateTotal() }}
+          </div>
+          <button class="bluebutton" @click="confirmarCompra">Confirmar compra</button>
         </div>
       </div>
-      <div class="sidebar">
-        <h2>Detalles de la compra</h2>
-        <table>
-          <thead>
-            <tr>
-              <th style="padding-left: 20px; padding-right: 150px;">Producto</th>
-              <th style="padding-right: 50px;">Precio</th>
-              <th style="padding-right: 50px; text-align: center; ">Cantidad</th>
-              <th>Total</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr v-for="(item, index) in cart" :key="index">
-              <td style="padding-left: 20px; text-align: left;">{{ item.productName }}</td>
-              <td style="text-align: left;">{{ item.price }}</td>
-              <td style="text-align: left;">
-                <input type="number" v-model="item.quantity" @input="updateQuantity(index, $event)"
-                  style=" width: 50px; margin: auto;">
-              </td>
-              <td style="text-align: left;">{{ item.price * item.quantity }}</td>
-              <td style="text-align: left;">
-    <button class="bluebutton" @click="eliminarProducto(index)">Eliminar</button>
-  </td>
-            </tr>
-          </tbody>
-        </table>
-        <div class="total">
-          Total de la compra: {{ calculateTotal() }}
-        </div>
-        <button  class="bluebutton" @click="confirmarCompra">Confirmar compra</button>
-      </div>
+      
     </div>
-    <div class="pagination">
-      <button  class="bluebutton" @click="loadPreviousPage" :disabled="pageNumber === 1">Anterior</button>
-      <span style="color: blue;" >Página {{ pageNumber }} de {{ totalPages }}</span>
-      <button  class="bluebutton" @click="loadNextPage" :disabled="pageNumber === totalPages - 1">Siguiente</button>
-    </div>
-  </div>
-</section>
+  </section>
 
 </template>
 
@@ -122,8 +124,8 @@ export default {
       }
     },
     eliminarProducto(index) {
-    this.cart.splice(index, 1);
-  },
+      this.cart.splice(index, 1);
+    },
     calculateTotal() {
       return this.cart.reduce((total, item) => total + item.price * item.quantity, 0);
     },
@@ -132,7 +134,7 @@ export default {
         const token = localStorage.getItem('token');
         if (token) {
           const decodedToken = VueJwtDecode.decode(token);
-          const customerId = decodedToken.id; 
+          const customerId = decodedToken.id;
           console.log('ID del cliente:', customerId);
           const data = {
             customerId: customerId,
@@ -140,13 +142,16 @@ export default {
             items: this.cart.map(item => ({ productId: item.id, quantity: item.quantity }))
           };
           const response = await axios.post(`/order`, data);
+          window.alert('¡La compra se ha realizado con éxito!');
           console.log("Orden confirmada:", response.data);
-        } 
+          this.cart = [];
+        }
       } catch (error) {
+        window.alert('¡Error al confirmar la compra!');
         console.error("Error al confirmar la compra:", error);
       }
     }
-    
+
   }
 };
 </script>
@@ -155,7 +160,6 @@ export default {
 .container {
   display: flex;
   margin: 30px;
-  
 }
 
 .product-list {
@@ -194,10 +198,14 @@ export default {
 
 .pagination {
   margin-top: 20px;
+  margin: auto auto;
+  background-color: rgba(79, 79, 79, 0.841);
+  padding: 10px 10px 10px 10px;
 }
 
 .pagination button {
   margin-right: 10px;
+  margin-left: 10px;
 }
 
 .descripcion {
@@ -205,16 +213,18 @@ export default {
 }
 
 .subframe {
-    background-image: url('../assets/fondopagina.jpeg'); 
-    background-size: 30%; /* Cubrir todo el contenedor .subframe */
+  background-image: url('../assets/fondopagina.jpeg');
+  background-size: 30%;
+  height: 100vh; /* Altura del viewport */
+  /* Cubrir todo el contenedor .subframe */
 }
 
 .bluebutton {
-    color: #ffffff;
-    background-color: #0b6ce2;
-    padding: 10px;
-    border-radius: 10px;
-    align-self: center;
-    
+  color: #ffffff;
+  background-color: #0b6ce2;
+  padding: 10px;
+  border-radius: 10px;
+  align-self: center;
+
 }
 </style>
