@@ -5,6 +5,8 @@ import RegistroCliente from './pagesAdmin/RegistroCliente.vue';
 import PaginaInicio from './pagesAdmin/PaginaInicio.vue';
 import EditarProducto from './pagesAdmin/EditarProducto.vue';
 import ComprarProductos from './pagesUser/ComprarProductos.vue';
+import OrdenesClientes from './pagesAdmin/OrdenesClientes.vue';
+
 
 const routes = [
   {
@@ -31,7 +33,13 @@ const routes = [
     path: '/ComprarProductos',
     name: 'ComprarProductos',
     component: ComprarProductos
-  }
+  },
+  {
+    path: '/OrdenesClientes',
+    name: 'OrdenesClientes',
+    component: OrdenesClientes
+  },
+
 ];
 
 const router = createRouter({

@@ -5,8 +5,10 @@
       <div :class="$style.derecha">
         <router-link :to="{ name: 'PaginaInicio' }" :class="$style.link">Inicio</router-link>
         <router-link :to="{ name: 'ComprarProductos' }" :class="$style.link">Ordenes</router-link>
-        <router-link :to="{ name: 'RegistroProducto' }" :class="$style.link">Producto</router-link>
-        <router-link :to="{ name: 'EditarProducto' }" :class="$style.link">Producto</router-link>
+        <router-link :to="{ name: 'RegistroProducto' }" :class="$style.link">Registar Producto</router-link>
+        <router-link :to="{ name: 'EditarProducto' }" :class="$style.link">Editar Producto</router-link>
+        <router-link :to="{ name: 'OrdenesClientes' }" :class="$style.link">Pedidos</router-link>
+
       </div>
     </div>
   </header>

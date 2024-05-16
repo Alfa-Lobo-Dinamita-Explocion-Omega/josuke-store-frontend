@@ -185,7 +185,6 @@ export default {
     align-self: center;
     margin-bottom: 20px;
     margin-top: 20px;
-
 }
 
 
